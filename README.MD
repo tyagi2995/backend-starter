@@ -77,3 +77,9 @@ project/
 ```
 
 <!-- npm install cors -->
+
+<!-- Remove current repo  -->
+
+git remote -v
+
+git remote remove origin
