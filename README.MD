@@ -75,3 +75,5 @@ project/
 ├── app.js
 └── package.json
 ```
+
+<!-- npm install cors -->
