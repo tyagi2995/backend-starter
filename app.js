@@ -38,7 +38,7 @@ app.use(
 //  * Body Parsers, * Limit kept LOW to avoid memory abuse
 app.use(express.json({ limit: "10mb" }));
 
-// app.use("/api", require("./routes/route"));
+app.use("/api", require("./routes/route"));
 
 const PORT = process.env.PORT || 3000;
 
