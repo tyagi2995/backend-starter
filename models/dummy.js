@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  x;
+
   dummy.init(
     {
       first_name: {
