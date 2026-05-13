@@ -1,0 +1,10 @@
+{
+  "development": {
+    "username": "nfdc",
+    "password": "Odoc@1$ilm",
+    "database": "events",
+    "host": "119.82.68.149",
+    "dialect": "mysql",
+    "logging": false
+  }
+}
