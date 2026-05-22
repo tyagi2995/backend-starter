@@ -4,7 +4,29 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
+const { Sequelize } = require("sequelize");
 
+const sequelize = new Sequelize("eams_db", "nfdc", "Odoc@1$ilm", {
+  host: "192.168.1.11",
+  dialect: "mysql",
+  logging: false,
+  port: 3306,
+  dialectOptions: {
+    connectTimeout: 60000,
+  },
+});
+
+async function testConnection() {
+  try {
+    await sequelize.authenticate();
+    console.log("✅ MySQL Connected Successfully");
+  } catch (error) {
+    console.error("❌ Connection Failed");
+    console.error(error);
+  }
+}
+
+testConnection();
 /**
  * Allowed Frontend Origins
  */

@@ -3,7 +3,7 @@ module.exports = {
     username: "nfdc",
     password: "Odoc@1$ilm",
     database: "events",
-    host: "119.82.68.149",
+    host: "192.168.1.11",
     dialect: "mysql",
     logging: false,
   },

@@ -2,12 +2,7 @@ const express = require("express");
 const dummyController = require("../controller/dummyController");
 const router = express.Router();
 
-// router.get("/", (req, res) => {
-//   res.json({
-//     status: 200,
-//     message: "Users API initialised",
-//   });
-// });
+router.route("/dummys").get(dummyController.dummy);
 
 // Health check / welcome route
 router.get("/", (req, res) => {
