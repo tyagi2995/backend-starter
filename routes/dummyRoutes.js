@@ -1,10 +1,13 @@
 const express = require("express");
-const dummyController = require("../controller/dummyController");
 const router = express.Router();
+const dummyController = require("../controller/dummyController");
+const { postCheck } = require("../utils/validation");
+const { dummy } = require("../validations/dummyValidation");
 
-router.route("/dummys").get(dummyController.dummy);
+router.get("/dummys", dummyController.getDummy);
 
-// Health check / welcome route
+router.post("/dummys-login", postCheck(dummy), dummyController.createDummy);
+
 router.get("/", (req, res) => {
   return res.status(200).json({
     success: true,

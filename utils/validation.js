@@ -1,24 +1,33 @@
-const AppError = require("./appError");
-// const Joi = require("joi");
-
 exports.postCheck = (schema) => {
   return (req, res, next) => {
-    let postdata = { ...req.body };
-    // console.log({ postdata: req.body })
-    // const { error, value } = schema.validate(postdata, { abortEarly: false });
-    const { error, value } = schema.validate(postdata);
+    const postdata = { ...req.body };
 
-    if (error == undefined) {
-      next();
-    } else {
-      //next(error);
-      const message = error.details[0].message;
+    const { error, value } = schema.validate(postdata, {
+      abortEarly: false,
+      stripUnknown: true,
+    });
 
-      // Return clean response
-      return res.status(200).json({
-        status: false,
-        message: message,
-      });
+    // Validation Passed
+    if (!error) {
+      req.body = value;
+      return next();
     }
+
+    // Format Errors
+    const errors = {};
+
+    error.details.forEach((detail) => {
+      const field = detail.path[0];
+
+      errors[field] = detail.message
+        .replace(/"/g, "")
+        .replace(/^./, (str) => str.toUpperCase());
+    });
+
+    return res.status(422).json({
+      success: false,
+      message: "Validation failed",
+      errors,
+    });
   };
 };
