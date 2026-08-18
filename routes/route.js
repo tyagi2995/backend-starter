@@ -9,7 +9,7 @@ const { dummy } = require("../validations/dummyValidation");
 router.get("/", (req, res) => {
   res.json({
     success: true,
-    message: "Welcome to EAMS API - NFDC Event Accreditation Management System",
+    message: "Welcome to the API",
   });
 });
 

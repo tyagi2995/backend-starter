@@ -40,8 +40,6 @@ app.use(express.json({ limit: "10mb" }));
 
 app.use("/api", require("./routes/route"));
 
-const PORT = process.env.PORT || 3000;
-
 /**
  * Health Check Route
  */
@@ -75,6 +73,7 @@ app.use((err, req, res, next) => {
   });
 });
 
+const PORT = process.env.PORT || 7500;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
